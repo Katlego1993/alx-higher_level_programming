@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 
-def add(i,j):
-    return(i+j)
+def add(a,b):
+    return(a+b)
