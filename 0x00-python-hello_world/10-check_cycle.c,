@@ -1,0 +1,27 @@
+#include "lists.h"
+
+/**
+* check_cycle - check if linked list has a cycle
+* @list: beginner node
+* Return: 1 with cycle or 0 if no cycle
+*/
+
+int check_cycle(listint_t *list)
+{
+listint_t *now, *c;
+if (list == NULL || list->next == NULL)
+return(0);
+now = list;
+c = now->next;
+
+while (now != NULL && c->next != NULL
+&& c->next->next != NULL)
+{
+if (now == c)
+return(1);
+now = now->next;
+c = c->next->next;
+}
+return (0);
+}
+
