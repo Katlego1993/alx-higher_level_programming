@@ -1,7 +1,4 @@
 #!/usr/bin/bash
 def no_c(my_string):
-    new_str = ""
-    for a in my_string:
-        if (a != 'c') and (a != 'C'):
-            new_str += a
-    return (new_str)
+    copy = [a for a in my_string if a != 'c' and a != 'C']
+    return ("".join(copy))
