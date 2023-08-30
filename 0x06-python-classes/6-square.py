@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-"""Square class definition."""
+"""Define a class Square."""
 
 
 class Square:
-    """Square representation."""
+    """Represent a square."""
 
     def __init__(self, size=0, position=(0, 0)):
-        """New square initializer.
+        """Initialize a new square.
+
         Args:
             size (int): The size of the new square.
             position (int, int): The position of the new square.
@@ -55,4 +56,4 @@ class Square:
         for i in range(0, self.__size):
             [print(" ", end="") for j in range(0, self.__position[0])]
             [print("#", end="") for k in range(0, self.__size)]
-            print("")                 
+            print("")      
