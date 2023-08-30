@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""Sqaure method defined"""
-class Square:
-    """Square representation"""
-    def__int__(self, size):
-        """Initialize a new Square.
+"""Square module."""
 
+
+class Square:
+    """Defines a square."""
+
+    def __init__(self, size):
+        """Constructor.
         Args:
-        size (int): The size of the new square.
+            size: length of side of the square.
         """
         self.__size = size
