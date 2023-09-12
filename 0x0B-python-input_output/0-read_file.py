@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Defines a text file reading function."""
+def read_file(filename=""):
+    """function that reads a text file and prints it"""
 
-def number_of_lines(filename=""):
-    with open(filename, "r", encoding="UTF-8") as f:
-        return len(list(f))
+    with open(filename) as f:
+        text = f.read()
+        print(text, end="")
