@@ -1,22 +1,29 @@
 #!/usr/bin/node
-// Prints all characters in a specific Star Wars movie from the api
 
 const request = require('request');
-const movie = process.argv[2];
-const url = 'https://swapi.co/api/films/' + movie;
 
-request(url, function (err, res, body) {
-  if (err) {
-    console.log(err);
-  }
-  let film = JSON.parse(body);
-  for (let character of film.characters) {
-    request(character, function (err, res, body) {
-      if (err) {
-        console.log(err);
-      }
-      let chr = JSON.parse(body);
-      console.log(chr.name);
+const movieId = process.argv[2];
+const apiUrl = `https://swapi.dev/api/films/${movieId}/`;
+
+request(apiUrl, function (error, response, body) {
+  if (!error && response.statusCode === 200) {
+    const movieData = JSON.parse(body);
+
+    console.log(`Characters of "${movieData.title}":`);
+
+    movieData.characters.forEach((characterUrl) => {
+      request(characterUrl, function (charError, charResponse, charBody) {
+        if (!charError && charResponse.statusCode === 200) {
+          const characterData = JSON.parse(charBody);
+
+          console.log(characterData.name);
+        } else {
+          console.error('Error fetching character data:', charError);
+        }
+      });
     });
+  } else {
+    console.error('Error fetching movie data:', error);
   }
 });
+
